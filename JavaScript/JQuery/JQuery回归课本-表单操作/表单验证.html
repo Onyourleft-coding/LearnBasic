@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+		</script>
+		<style type="text/css">
+			.int{
+				width: 400px;
+				display: block;
+				margin: 5px 0;
+			}
+			.centent{
+				text-align: center;
+			}
+			label{
+				display: inline-block;
+				width: 100px;
+				text-align: right;
+			}
+			input{
+				vertical-align: top;
+			}
+			.sub{
+				width: 300px;
+				display: block;
+				margin: 5px 0;
+				text-align: center;
+			}
+		</style>
+		<script>
+			//表单内的class属性为‘required’的文本框为必填，因此需要将它和其他的非必须填写表单元素加以区分
+			//即在文本框后面追加一个红色的小星星标识。
+		</script>
+	</head>
+	<body>
+		<form action="" method="post">
+			<div class="int">
+				<label for="username">用户名：</label>
+				<input type="text" id="username" class="required" />
+			</div>
+			<div class="int">
+				<label for="email">邮箱：</label>
+				<input type="email" id="email" class="required" />
+			</div>
+			<div class="int">
+				<label for="personinfo">个人资料：</label>
+				<input type="text" id="personinfo" />
+			</div>
+			<div class="sub">
+				<input type="submit" id="send" value="提交" />
+				<input type="reset" id="res"  />
+			</div>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+		</script>
+		<!-- 当点击放大按钮后，如果评论框的高度小于500px，那么在原有的高度的基础上增加50px -->
+		<!-- 点击缩小按钮后，如果评论框的高度大于50px，缩小效果一致。 -->
+		<script>
+			$(function(){
+				var $comment = $('#comment'); //获取评论框
+				$('.bigger').click(function(){ //放大按钮绑定单击事件
+				
+				// 注意在动画的过程中,需要判断评论框是否正处于动画过程,如果处于动画过程中,那么不追加其他动画
+				// 以免造成动画队列不必要的累积,使效果出现问题.
+				
+				
+				//滚动条高度的变化
+				//通过控制多行文本框的滚动条的变化，使文本框的内容滚动
+				//需要控制的是另一个属性，即scrollTop 将height改成scrollTop即可，详看30行
+				
+				
+				
+				if(!$comment.is(":animated")){ //判断是否处于动画
+					if($comment.height() < 500){
+						//重新设置高度，在原有的基础上加50
+						//$comment.height($comment.height() + 50);
+						//变化效果很呆板，改用之前的animate
+						$comment.animate({scrollTop:"+=50"},400);
+						//当点击放大按钮后，评论框的滚动条就会滚动到指定的位置
+						
+						//点击放大按钮后，评论框的高度会在0.4秒内增大50px
+						}
+					}
+				})
+				
+				$('.smaller').click(function(){ //缩小按钮绑定单机事件
+				if($comment.height()>50){
+					//重新设置高度，在原有的基础上减50
+					//$comment.height($comment.height() - 50);
+					$comment.animate({height:"-=50"},400);
+					//效果同理
+				}	
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<form action="" method="">
+			<div id="" class="msg">
+				<div class="msg_caption">
+					<span class="bigger">放大</span>
+					<span class="smaller">缩小</span>
+				</div>
+				<div id="">
+					<textarea id="comment" rows="8" cols="20">多行文本框高度变化。多行文本框高度变化。
+					多行文本框高度变化。多行文本框高度变化。多行文本框高度变化。多行文本框高度变化。多行文本框高度变化。
+					多行文本框高度变化。多行文本框高度变化。多行文本框高度变化。多行文本框高度变化。多行文本框高度变化。
+					多行文本框高度变化。多行文本框高度变化。多行文本框高度变化。多行文本框高度变化。多行文本框高度变化。
+					多行文本框高度变化。多行文本框高度变化。多行文本框高度变化。多行文本框高度变化。多行文本框高度变化。
+					多行文本框高度变化。多行文本框高度变化。多行文本框高度变化。多行文本框高度变化。多行文本框高度变化。</textarea>
+				</div>
+			</div>
+		</form>
+	</body>
+</html>

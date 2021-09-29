@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>按钮单机隐藏当前的元素</title>
+		<script src="https://cdn.staticfile.org/jquery/2.0.0/jquery.min.js">
+		</script>
+		<script>
+			$(function(){
+				$("p").click(function(){
+					$(this).hide();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<p>你点击我，我将消失</p>
+		<p>点我我也消失</p>
+		<h4>点我那我就不消失</h4>
+	</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+		</script>
+		<script>
+			$(function(){
+				$(":input").focus(function(){
+					$(this).addClass("focus");
+					//当文本框获得焦点时，添加css
+				}).blur(function(){
+					$(this).removeClass("focus");
+					//当文本框失去焦点时，失去css
+				})
+			})
+		</script>
+		<style type="text/css">
+			.focus{
+				border: 1px solid #f00;
+				background-color: #fcc;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="#" method="post" id="regForm">
+			<fieldset>
+				<legend>个人基本信息</legend>
+				<div id="">
+					<label for="username">名称：</label>
+					<input id="username"  type="text"/>
+				</div>
+				<div id="">
+					<label for="pass">密码：</label>
+					<input id="pass" type="password" />
+				</div>
+				<div id="">
+					<label for="msg">详细信息:</label>
+					<textarea id="msg" rows="2" cols="20"></textarea>
+				</div>
+			</fieldset>
+		</form>
+	</body>
+</html>

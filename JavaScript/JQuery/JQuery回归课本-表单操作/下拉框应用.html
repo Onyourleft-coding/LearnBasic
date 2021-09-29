@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+		</script>
+		<script>
+			$(function(){
+				$("#add").click(function(){
+					// var $options = $("#select1 option:selected");//获取选中的选项
+					// var #remove = $options.remove(); //删除下拉列表中的选项
+					//删除和追加可以用appendTo()方法直接完成
+					
+					//单个选项
+					$("#add").click(function(){
+						var $options = $("#select1 option:selected"); //获取选项中的选项
+						$options.appendTo("#select2"); //追加给对方
+					});
+					//$remove.appendTo("#select2"); //追加给对方
+					
+					//全部选项
+					$("#add_all").click(function(){
+						var $options = $("#select1 option"); //获取选项中的全部内容
+						$options.appendTo("#select2");//全部追加给对方
+					});
+					
+					$("#select1").dblclick(function(){
+						//绑定双击事件，将选项中的选项添加给对方
+					});
+					//双击某个选项将其添加给对方
+					//首先给下拉列表绑定双击事件
+					$('#select1').dblclick(function(){ //绑定双击事件
+						var $options = $("option:selected",this);//获取选项中的选项
+						$options.appendTo('#select2'); //追加给对方
+					});
+				});
+				$("#remove").click(function(){
+					// var $options = $("#select1 option:selected");//获取选中的选项
+					// var #remove = $options.remove(); //删除下拉列表中的选项
+					//删除和追加可以用appendTo()方法直接完成
+					
+					//单个选项
+					$("#remove").click(function(){
+						var $options = $("#select2 option:selected"); //获取选项中的选项
+						$options.appendTo("#select1"); //追加给对方
+					});
+					//$remove.appendTo("#select2"); //追加给对方
+					
+					//全部选项
+					$("#remove_all").click(function(){
+						var $options = $("#select2 option"); //获取选项中的全部内容
+						$options.appendTo("#select1");//全部追加给对方
+					});
+					
+					$("#select2").dblclick(function(){
+						//绑定双击事件，将选项中的选项添加给对方
+					});
+					//双击某个选项将其添加给对方
+					//首先给下拉列表绑定双击事件
+					$('#select2').dblclick(function(){ //绑定双击事件
+						var $options = $("option:selected",this);//获取选项中的选项
+						$options.appendTo('#select1'); //追加给对方
+					});
+				});
+				
+			});
+		</script>
+		<style type="text/css">
+			.centent2{
+				padding-left: 180px;
+				margin-top: -244px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="centent1">
+			<select multiple="multiple" id="select1" style="width: 100px;height: 160px;">
+				<option value ="1">选项1</option>
+				<option value ="2">选项2</option>
+				<option value ="3">选项3</option>
+				<option value ="4">选项4</option>
+				<option value ="5">选项5</option>
+				<option value ="6">选项6</option>
+				<option value ="7">选项7</option>
+			</select>
+			<div id="">
+				<span id="add">选中添加到右边&gt;&gt;<br/></span></br>
+					<span id="add_all">全部添加到右边&gt;&gt;</span>
+			</div>
+			<br/>
+			<div class="centent2">
+				<select multiple="multiple" id="select2" style="width: 100px;height: 160px;">
+					<option value ="8">选项8</option>
+				</select>
+				<div id="">
+					<span id="remove">&lt;&lt;选中删除到左边<br></span><br/>
+					<span id="remove_all">&lt;&lt;全部删除到左边</span>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

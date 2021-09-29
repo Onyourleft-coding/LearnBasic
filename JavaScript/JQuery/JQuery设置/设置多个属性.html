@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+		</script>
+		<script>
+			$(function(){
+				$("button").click(function(){
+					$("#one").attr({
+					"href" : "http://www.onewyl.cc/archives",
+					"title" : "文章归档"
+					});
+					//通过修改的title值来修改链接名称
+					title = $("#one").attr('title');
+					$("#one").html(title);
+				});
+			})
+		</script>
+	</head>
+	<body>
+		<p><a href="//www.onewyl.cc" id="one">ONE无引力</a></p>
+		<button>修改href和title</button>
+		<p>点击按钮修改后，可以查看href和title是否变化。</p>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+		</script>
+		<script>
+			$(function(){
+				$("#hide").click(function(){
+					$("p").hide("slow");
+				});
+				$("#show").click(function(){
+					$("p").show("slow",function(){
+						alert("显示效果已完成");
+					})
+				//$("p").show()speed,callback;
+				//speed 可选slow fast毫秒
+				
+				});
+				
+			});
+		</script>
+	</head>
+	<body>
+		<p>如果你点击"隐藏按钮"，我将会消失</p>
+		<button id="hide">隐藏</button>
+		<button id="show">显示</button>
+	</body>
+</html>

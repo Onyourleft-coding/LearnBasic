@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.staticfile.org/jquery/2.0.0/jquery.min.js">
+		</script>
+		<script>
+			$(function(){
+				$("#p1").mousedown(function(){
+					alert("鼠标在该段落下按下！");
+					//松开同理，mouseup
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<p id="p1">鼠标指针移动到这里并点击</p>
+	</body>
+</html>

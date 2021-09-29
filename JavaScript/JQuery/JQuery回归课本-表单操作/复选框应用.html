@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+		</script>
+		<script>
+			// 全选操作就是当用户点击全选按钮时,需要将复选框组全部选中
+			// 需要绑定单击事件,然后使用选择符寻找符号要求的复选框,最后通过attr()方法来设置属性checked的值,使之选中
+
+			$(function(){
+				$("#CheckedAll").click(function(){
+					
+					//所有复选框的checked属性的值和控制全选的复选框的checked属性的值是相同
+					//因此可以忽略if判断，直接赋值
+					// if (this.checked) { //如果当前点击的多选框被选中
+					// 	$("input[type=checkbox][name=items]").attr("checked",true);
+					// } else{
+					// 	$("input[type=checkbox][name=items]").attr("checked",false);
+					// }
+					
+					//所有的checkbox跟着全选的checkbox走
+					$('[name=items]:checkbox').attr("checked",this.checked);
+					
+					// $('[name=items]:checkbox').click(function(){
+					// 	var flag = true;
+					// 	$('[name=items]':checkbox).each(function(){
+					// 		if(!this.checked){
+					// 			flag=false;
+					// 		}
+					// 	});
+					// 	$('#CheckedAll').attr('checked',flag);
+					// });
+					
+					$('[name=items]:checkbox').click(function(){//对复选框组绑定单机事件
+					
+						//定义一个临时变量，避免重复使用同一个选择器选择页面中的元素，提示程序效率
+						var $tmp = $('[name=items]:checkbox');
+						//用filter方法筛选出选中的复选框，并直接给CheckedAll赋值
+						
+						//判断复选框的总数是否与选中的复选框数量相等。
+						//若相等，则说明全选中了，id为CheckedAll的复选框应当处于选中状态，否则不选中
+						$('#CheckedAll').attr('checked',$tmp.length==$tmp.filter(':checked').length);
+					});
+					
+				});
+				//全不选，只需要将checked的值改为false即可
+				// $("#CheckedNo").click(function(){
+				// 	$("[name=items]:checkbox").attr("checked",false);
+				// });
+				
+				
+				//反选操作
+				//反选操作需要循环每个复选框进行设置，取它们值的反值，可以使用非运算符“!”
+				// $("#CheckedRev").click(function(){
+				// 	$("[name=items]:checkbox").each(function(){
+				// 		$(this).attr("checked",!$(this).attr("checked"));
+				// 		this.checked = !this.checked;
+				// 	});
+				// });
+				
+				
+				//提交，通过val方法获取选中的值，将被选中的项的值输出
+				$("#send").click(function(){
+					var str= "你选中的是：\r\n";
+					$("[name=items]:checkbox:checked").each(function(){
+						str += $(this).val()+ "\r\n";
+					})
+					alert(str);
+				})
+				
+			});
+		</script>
+	</head>
+	<body>
+		<form method="post" action="#">
+			你喜欢的运动是什么？
+			<input  type="checkbox" id="CheckedAll" value="全选/全不选"/>全选/全不选
+			<br/>
+			<input type="checkbox" name="items" value="足球" /> 足球  
+			<input type="checkbox" name="items" value="篮球" /> 篮球  
+			<input type="checkbox" name="items" value="羽毛球" /> 羽毛球  
+			<input type="checkbox" name="items" value="乒乓球" /> 乒乓球  
+			<!-- 如果要使复选框处于选中或者不选中状态，必须通过控制元素checked属性来表达，值为true则为默认选中，false则没被选中 -->
+			<br/>
+			
+			<!-- <input  type="button" id="CheckedNo" value="全不选"/> -->
+			<!-- <input  type="button" id="CheckedRev" value="反	选"/> -->
+			</br>
+			<input  type="button" id="send" value="提	交"/>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+		</script>
+		<script>
+			$(function(){
+				$("#div1").click(function(){
+					$("#div2").slideToggle("slow");
+				});
+			});
+		</script>
+		<style type="text/css">	
+			#div1,#div2{
+			padding: 5px;
+			text-align: center;
+			background-color: aquamarine;
+			border: solid 1px beige ;
+			}
+			#div2{
+				padding: 50px;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			点我下拉/上拉面板
+		</div>
+		<div id="div2">
+			Hello world!
+		</div>
+	</body>
+</html>

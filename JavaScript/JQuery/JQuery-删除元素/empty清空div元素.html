@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+		</script>
+		<script>
+			$(function(){
+				$("button").click(function(){
+					$("#div1").empty();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="div1" style="width: 300px; height: 100px;border: 1px solid skyblue;background-color: coral;">
+			这是div中的一些文本。
+			<p>这是在div中的一个段落。</p>
+			<p>这是在div中的另外一个段落。</p>
+		</div>
+		<button>清空div元素</button>
+	</body>
+</html>

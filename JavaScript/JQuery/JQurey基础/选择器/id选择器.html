@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.staticfile.org/jquery/2.0.0/jquery.min.js">
+		</script>
+		<script>
+			$(function(){
+				$("button").click(function(){
+					$("#test").hide();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h2>这是一个标题</h2>
+		<p>这是一个段落，没有id所以不会被hide</p>
+		<p id="test">这是另一个段落，添加了id=test，所以会被hide</p>
+		<button>点我</button>
+	</body>
+</html>
