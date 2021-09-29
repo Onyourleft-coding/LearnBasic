@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 字符串引号的种类
+      let single = "single-quoted";
+      let double = "double-quoted";
+      let backticks = `backticks`;
+      console.log(single);
+      console.log(double);
+      console.log(backticks);
+
+      /* 单引号基本上和双引号相同，但是反引号允许我们通过${...}将任何表达式嵌入到字符串中
+       */
+      function sum(a, b) {
+        return a + b;
+      }
+      //   alert(`1+2=${sum(1,2)}.`)
+      // 使用反引号的另一个优点是可以跨行
+      let guestList = `Guests:
+    * John
+    * Pete
+    * Mary
+    * Tom
+    `;
+      // alert(guestList)
+      console.log(guestList);
+
+      //字符串长度
+      console.log(`Mylength`.length); //8
+
+      //   访问字符
+      /* 要获取在pos位置的一个字符，可以使用[pos]或者调用str.charAt(pos)方法，第一个字符从零位置开始 */
+      let str = `Hello`;
+      //第一个字符
+      console.log(str[0]); //H
+      console.log(str.charAt(0)); //H
+      console.log(str[4]); //o
+      //   最后一个字符
+      console.log(str[str.length - 1]); //o -1是因为数组下标从0开始
+
+      /*
+      方括号是获取字符的一种现代的方法，而charAt是历史原因才存在的。他们之间唯一的区别就是如果没有找到字符，[]返回undefined，而charAt返回一个空字符串
+       */
+      console.log(str[100]); //undefined
+      console.log(str.charAt(100)); //[]
+
+      //   我们可以使用for..of遍历字符
+      for (let char of str) {
+        console.log(char); //H,e,l,l,o
+      }
+
+      //   字符串是不可变的
+      let str2 = "Hi";
+      str2[0] = "h"; //error
+      //   alert(str2[0]) //仍然是H
+
+      // 通常的解决方法是创建一个新的字符串，并将其分配给str而不是以前的字符串
+      str2 = "h" + str2[1];
+      console.log(str2); //hi
+
+      //   改变大小写
+      console.log("Interface".toLocaleLowerCase()); //interface
+      console.log("Interface".toLocaleUpperCase()); //INTERFACE
+
+      //查找子字符串
+
+      //   1.str.indexOf，第一个方法是str.indexOf(substr,pos).它从给定位置pos开始，在str中查找substr，如果没有找到返回-1，否则返回匹配成功的位置
+
+      let str3 = "Widget with id";
+      console.log(str3.indexOf("Widget")); //0 一开始就被找到
+      console.log(str3.indexOf("widget")); //-1 检索是大小写敏感的
+      console.log(str3.indexOf("id")); //1 id在位置1处
+
+      //   可选的第二参数允许我们从给定的起始位置开始检索
+      //   例如id第一次出现的位置是1，查找下一个存在位置时，我们从2开始检索
+      console.log(str3.indexOf("id", 2)); //12
+
+      //如果我们对所有存在的位置都感兴趣，可以在一个循环里使用indexOf，每一次新的调用都发送在上一匹配位置之后
+      let str4 = "As sly as a fox,as strong as an ox";
+      let target = "as"; //这是我们要查找的目标
+      let pos = 0;
+      while (true) {
+        let foundPos = str4.indexOf(target, pos);
+        if (foundPos === -1) break;
+        console.log(`Found ad ${foundPos}`);
+        pos = foundPos + 1; //继续从下一个位置查找
+      }
+
+      /*
+      let pos = -1
+      while((pos=str.indexOf(traget,pos+1))!=-1){
+          console.log(pos)
+      }
+      */
+
+      //   从字符串的末尾开始搜索到开头，它会以相反的顺序列出这些事件
+      //   str.lastIndexOf(substr, pos);
+
+      /* includes\startsWith\endsWith
+      如果我们只需要检测匹配，但不需要它的位置，那么这是正确的选择
+       */
+      console.log("---------------------");
+      console.log("width with id".includes("width")); //true
+      console.log("Hello".includes("Bye")); //false
+      //   str.includes的第二个可选参数是开始搜索的起始位置
+      console.log("Midget".includes("id")); //true
+      console.log("Widget".includes("id", 3)); //false
+
+      //   方法str.startsWith和str.endsWith的功能和名称所表示的意思相同
+      console.log("widget".startsWith("wid")); //true
+      console.log("widget".endsWith("get")); //true
+
+      //   获取字符串
+      /* js中有三种获取字符串的方法
+    substring、substr、slice */
+      console.log("slice演示");
+      // str.slice(start[,end]) 返回字符串从start到（但不包括）end的部分
+      let str5 = "stringify";
+      console.log(str5.slice(0, 5)); //strin 从0~5但不包括5
+      console.log(str5.slice(0, 1)); //s  从0~1但不包括1
+      //   如果没有第二个参数，slice会一直运行到字符串末尾
+      let str6 = "stringify";
+      console.log(str6.slice(2)); //从第二个位置直到结束 ringify
+      // start/end也有可能是负值，它们的意思是起始位置从字符串结尾计算
+      let str7 = "stringify";
+      // 从右边的四个位置开始，在右边的第一个位置结束
+      console.log(str7.slice(-4, -1)); //gif
+      console.log("substring演示");
+      //   str.substring(start[,end]) 返回的字符串在start和end之间的部分，这与slice几乎相同，但它允许start大于end
+      let str8 = "stringify";
+      //这些对于substring是相同的
+      console.log(str8.substring(2, 6)); //ring
+      console.log(str8.substring(6, 2)); //ring
+
+      //   但是对于slice是不同的
+      console.log(str8.slice(2, 6)); //ring
+      console.log(str8.slice(6, 2)); // 空字符串
+      //   不支持负参数，它们被视为0
+
+      console.log("substr演示");
+      //   str.substr(start[,length]) 返回字符串从start开始的指定length的部分，和之前的相比，这个允许我们指定length而不是结束位置
+      let str9 = "stringify";
+      console.log(str9.substr(2, 4)); //从位置2开始，获取4个字符 ring
+      //   第一个参数可能是复数，从结尾算起
+      console.log(str9.substr(-4, 2)); //gi 从第四位获取2个字符
+
+      console.log("---------------");
+      console.log("比较字符串");
+      //   比较字符串
+      /*
+    字符串按字母顺序逐字比较，不过有一些奇怪的地方，小写字母总是大于大写字母 */
+      console.log("a" > "Z"); //true
+      //   带变音符号的字母存在乱序的情况
+      console.log("Österreich" > "Zealand"); //true
+      /* 所有的字符串都使用UTF-6
+      编码，即每个字符都有对应的数字代码，有特殊的方法可以获取代码表示的字符，以及字符对应的代码
+       */
+      //   str.codePointAt(pos) 返回在pos位置的字符代码
+      //不同的字母有不同的代码
+      console.log("z".codePointAt(0)); //122
+      console.log("Z".codePointAt(0)); //90
+
+      //   String.formCodePoins(code) 通过数字创建字符
+      console.log(String.fromCodePoint(90)); //Z
+      //   还可以用\u后跟十六进制代码，通过这些代码添加unicode字符
+      //在十六进制系统中90为5a
+      console.log("\u005a");//Z
+    </script>
+  </body>
+</html>

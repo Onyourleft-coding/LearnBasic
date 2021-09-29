@@ -1,0 +1,1 @@
+export let name = "Mr.lin";//导出这个变量

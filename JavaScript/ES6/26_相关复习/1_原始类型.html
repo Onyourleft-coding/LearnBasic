@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>原始类型</title>
+  </head>
+  <body>
+    <script>
+      // 把一个函数作为对象的属性存储到对象中。
+      let john = {
+        name: "John",
+        sayHi: function () {
+          console.log("hi Boddy");
+        },
+      };
+      john.sayHi();
+
+      // 字符串方法 返回一个大写化处理的字符串
+      let str = "Hello";
+      console.log(str.toLocaleUpperCase());
+
+      // 数字也有自己的方法
+      let n = 1.23456;
+      console.log(n.toFixed(2));//保留两位 1.23
+
+      
+    </script>
+  </body>
+</html>

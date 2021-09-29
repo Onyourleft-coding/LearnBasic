@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 定义一个10亿的数
+      let billion = 100000000;
+      // 在js中，可以用科学计数法来实现
+      let Ebillion = 1.3e9;
+      console.log(billion, Ebillion);
+      //也可以写一些微小的数字，例如微秒（百万分之一秒）
+      let ms = 0.0000001;
+      //同样用科学计数法来实现
+      let Ems = 1e-6;
+      console.log(ms, Ems);
+
+      //   toString()方法 返回给定base进制数字系统中num的字符串形式
+      let num = 25;
+      console.log(num.toString(16)); //19
+      console.log(num.toString(2)); //11001
+      let num2 = 23.1;
+      let num3 = 23.1;
+      let num4 = 25.1;
+      let num5 = 21.113232;
+
+      // 数字的舍入
+      // 1.向下舍入
+      console.log(Math.floor(num2)); //23
+
+      // 2.向上舍入
+      console.log(Math.ceil(num3)); //24
+
+      // 3.向最近的整数舍入
+      console.log(Math.round(num4)); //25
+
+      // 4.移除小数点后的，但没有舍入（IE浏览器不支持此方法）
+      console.log(Math.trunc(num5)); //21
+
+      // 把数字舍入到小数点后n位
+      // 例如1.23456 我们想要1.23
+
+      let num6 = 1.23456;
+      let num7 = 2.23456;
+      // 1.乘除法
+      //   要将数字舍入到小数点后n位，我们可以将数字乘以100或更大的10的整数次幂，然后调用舍入函数，然后再将其除回
+      console.log(Math.floor(num6 * 100) / 100); //1.23456=>123.456=>123=>1.23
+
+      //   2.函数toFixed(n)将数字舍入到小数点后n位，并以字符串形式返回结果
+      console.log(num7.toFixed(1)); //2.2
+
+      // 0.1+0.2精度丢失问题 借助toFixed(2)对结果进行舍入，
+      let sum8 = 0.1 + 0.2;
+      console.log(+sum8.toFixed(2)); //0.3
+
+      // 测试isFinite和isNaN
+      /* Infinity和-Infinity是一个特殊值，比任何数值都大（小）
+    NaN是一个error
+    它们是Number类型，但不是普通数字
+    isNaN(value)将其参数转换为数字，然后测试它是否为null
+     */
+      let value = 10;
+      console.log(isNaN(value)); //false
+      console.log(isNaN("str")); //true
+      console.log(isFinite("15")); //true
+      console.log(isFinite("str")); //false
+      //   有时isFinite被用于验证字符串是否为常规数字
+      //   let num9 = +prompt("enter a number");
+      //   console.log(isFinite(num9)); // 结果会是 true，除非你输入的是 Infinity、-Infinity 或不是数字
+
+      //从字符串中读取数字
+      /* parseInt和parseFloat
+      parsetInt返回一个整数，parseFloat返回一个浮点数
+      */
+      console.log(parseInt("123pxpxpx")); //123
+      console.log(parseFloat("456dsadad")); //456
+      console.log(parseInt("123px4px5px6")); //只会读取到123
+      console.log(parseFloat("456ds1ada1d")); //也是只会读取到456
+
+      //  在没有数字可读的情况下，会返回NaN
+      console.log(parseInt("a123")); //NaN
+      console.log(parseFloat("b123")); //NaN
+
+      //   parseInt的第二个参数，它指定了数字系统的基数
+      console.log(parseInt("0xff", 16)); //255
+
+      //   其他数学函数
+      /* js中有一个内建的Math对象，它包含了一个小型的数学函数和常量库 */
+      console.log(Math.random()); //返回一个0~1之间的小数
+      console.log(Math.random() * 3); //可以做算法，返回一个小于3的小数
+
+      // 从任意数量的参数中返回最大、最小值
+      console.log(Math.max(3, 5, 7, 10, -1)); //10
+      console.log(Math.min(3, 5, 7, 10, -1)); //-1
+
+      //   返回n给定的次幂
+      console.log(Math.pow(2, 5)); //2的五次幂 32
+    </script>
+  </body>
+</html>
