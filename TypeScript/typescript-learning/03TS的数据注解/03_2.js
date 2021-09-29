@@ -32,3 +32,41 @@ console.log("L_arr", L_arr);
 var L_arr2;
 L_arr2 = [1, "2"];
 console.log("L_arr2", L_arr2);
+// ts的特殊类型
+/*
+1.any(任意值)
+2.null(不存在的对象)
+3.undefined(声明但为初始化赋值)
+4.void(空值,无返回)
+ */
+// any 任意值
+var L_other = "Mr.lin";
+console.log("第一次时的类型为:", typeof L_other); //string
+L_other = 100;
+console.log("第二次的类型为:", typeof L_other); //number
+//总结:any会自动推断当前赋值的类型
+// 左边null是类型,右边null是一个null值
+var L_other2 = null;
+console.log("null", null); //null
+console.log("L_other2", typeof L_other2); //object
+// 未赋值的b
+var L_b;
+console.log("L_b", L_b); //声明未赋值为undefined
+//b符合other类型
+var L_other3 = L_b;
+console.log("L_other3", L_other3); //undefined
+function L_info2() {
+    //如果有返回则错误
+    // return 123;
+    console.log("123");
+}
+// 常规的其他类型都支持注解,比如布尔型和字符串型
+// 布尔值
+var L_flag = true;
+console.log("L_flag", L_flag); //true
+// 将数值转换成布尔值也支持
+var L_flag2 = Boolean(1);
+console.log('L_flag2', L_flag2);
+//字符串类型,和数值拼接后也是字符串
+var L_str = 'Miss.Zhao' + 100;
+console.log(typeof L_str);
