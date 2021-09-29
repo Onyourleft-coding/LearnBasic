@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>title</title>
+    <!-- 引入Vue -->
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+      <!-- 遍历数组 -->
+      <h2>人员列表-遍历数组</h2>
+      <ul>
+       <button @click.once="add">添加一个人</button>
+        <li v-for="(p,index) in persons" :key="p.id">
+          {{p.name}}-{{p.age}}
+          <input type="text">
+        </li>
+      </ul>
+   </div>
+    <script type="text/javascript">
+      Vue.config.productionTip = false; //阻止Vue在启动时生成生产提示
+      new Vue({
+        el: "#root",
+        data: {
+          persons: [
+            { id: "001", name: "张三", age: 18 },
+            { id: "002", name: "李四", age: 19 },
+            { id: "003", name: "王五", age: 15 },
+          ],
+        },
+        methods: {
+          add(){
+            const p = {id:"004",name:'陈六',age:16}
+            this.persons.unshift(p)//把p加在数组前方
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

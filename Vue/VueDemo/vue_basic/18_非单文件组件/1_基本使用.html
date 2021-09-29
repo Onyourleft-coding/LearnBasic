@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>title</title>
+    <!-- 引入Vue -->
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <h2>{{msg}}</h2>
+        <!-- 第三步：编写组件标签 -->
+      <gongsi></gongsi>
+      <hr />
+      <xuesheng></xuesheng>
+    </div>
+    <script type="text/javascript">
+      Vue.config.productionTip = false; //阻止Vue在启动时生成生产提示
+      // 第一步：创建company组件
+      const company = Vue.extend({
+        // el:'#root',//一定不要写el配置项，因为最终所有的组件都要被一个vm管理，由vm决定服务哪个对象
+        template: `
+        <div>
+            <h2>公司名称：{{companyName}}</h2>
+            <h2>公司地址：{{companyCity}}</h2>
+            <button @click="showName">点我提示学校名</button>
+            </div>
+          `,
+        data() {
+          return {
+            companyName: "摩尔",
+
+            companyCity: "清远",
+          };
+        },
+        methods: {
+            showName(){
+                alert(this.companyName)
+            }
+        }
+      });
+      const student = Vue.extend({
+        template: `
+        <div>
+            <h2>学生姓名：{{studentName}}</h2>
+            <h2>学生学习：{{studentSchool}}</h2>
+            </div>
+          `,
+        data() {
+          return {
+            studentName: "xiaobai",
+            studentSchool: "清职",
+          };
+        },
+      });
+      //   第二步：注册组件（局部注册）
+      new Vue({
+        el: "#root",
+        data:{
+            msg:'你好啊'
+        },
+        components: {
+          gongsi: company,
+          xuesheng: student,
+        },
+      });
+      //#region
+      //创建vm
+      // new Vue({
+      //     el:'#root',
+      //     data:{
+      //         company:{
+      //             name:'摩尔',
+      //             city:'清远'
+      //         },
+      //         student:{
+      //             name:'小白',
+      //             school:'清职'
+      //         }
+      //     }
+      // })
+      //#endregion
+    </script>
+  </body>
+</html>

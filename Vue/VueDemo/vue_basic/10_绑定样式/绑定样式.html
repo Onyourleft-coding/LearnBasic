@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>title</title>
+    <!-- 引入Vue -->
+    <script src="../js/vue.js"></script>
+    <style>
+      .basic {
+        height: 50px;
+        width: 200px;
+        border: 1px solid black;
+      }
+      .happy {
+        background-color: coral;
+        border: 2px solid rosybrown;
+      }
+      .sad {
+        background-color: gray;
+        border: 2px solid greenyellow;
+      }
+      .normal {
+        background-color: lightskyblue;
+        border: 2px mediumturquoise solid;
+      }
+      .atguigu1 {
+        font-size: 20px;
+        font-weight: 200;
+      }
+      .atguigu2 {
+        border-radius: 10%;
+      }
+      .atguigu3 {
+        width: 300px;
+        background-color: orangered;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+      <!-- 绑定class样式---字符串写法，适用于：样式的类名不确定，需要动态指定 -->
+      <div class="basic" :class="mood" @click="changeMood">{{name}}</div>
+      <br />
+      <br />
+      <!-- 绑定class样式--数组写法：适用于：样式的类名不确定，需要动态指定 -->
+      <!-- 适用于：要绑定的样式个数不确定，名字也不确定 -->
+      <div class="basic" :class="classArr">{{name}}</div>
+      <br />
+      <br />
+      <!-- 绑定class样式--对象写法，适用于：要绑定的样式个数确定、名字也确定，但要动态决定用不用 -->
+      <div class="basic" :class="classObj">{{name}}</div>
+      <br />
+      <br />
+      <div class="basic" :style="styleObj">{{name}}</div>
+      <br />
+      <br />
+      <div class="basic" :style="[styleObj,styleObj2]">{{name}}</div>
+    </div>
+    <script type="text/javascript">
+      Vue.config.productionTip = false; //阻止Vue在启动时生成生产提示
+      const vm = new Vue({
+        el: "#root",
+        data: {
+          name: "清远",
+          mood: "normal",
+          classArr: ["atguigu1", "atguigu2", "atguigu3"],
+          classObj: {
+            atguigu1: true,
+            atguigu2: true,
+          },
+          styleObj:{
+            fontSize:'40px',
+            color:'red',
+          },
+          styleObj2:{
+            backgroundColor:'orange'
+          }
+        },
+        methods: {
+          changeMood() {
+            // this.mood = 'happy'
+            const arr = ["happy", "sad", "normal"];
+            // Math.random()是生成0~1但不包含1的数，乘以3即可让它在0<3之间，floor向下取整
+            const index = Math.floor(Math.random() * 3);
+            this.mood = arr[index];
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

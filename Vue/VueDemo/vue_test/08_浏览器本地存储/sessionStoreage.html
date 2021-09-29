@@ -1,0 +1,39 @@
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sessionStoreage</title>
+  </head>
+  <body>
+    <h2>sessionStoreage</h2>
+    <button onclick="saveData()">点我保存一个数据</button>
+    <button onclick="readData()">点我读取一个数据</button>
+    <button onclick="delateData()">点我删除一个数据</button>
+    <button onclick="delateAllData()">点我清空一个数据</button>
+
+    <script>
+      function saveData() {
+        let p = { name: "张三", age: 18 };
+        console.log(p.toString());
+        sessionStorage.setItem("msg", "hello!!");
+        sessionStorage.setItem("msg2", 666);
+        sessionStorage.setItem("person", JSON.stringify(p));
+      }
+      function readData() {
+        console.log(sessionStorage.getItem("msg2"));
+        console.log(sessionStorage.getItem("msg"));
+        const result = sessionStorage.getItem("person");
+        console.log(JSON.parse(result));
+      }
+      function delateData() {
+        sessionStorage.removeItem("msg2");
+      }
+      function delateAllData() {
+        sessionStorage.clear();
+      }
+    </script>
+  </body>
+</html>
