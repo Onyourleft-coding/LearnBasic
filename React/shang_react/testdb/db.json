@@ -1,0 +1,54 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "111-xiugai-111",
+      "author": "xiaobai"
+    },
+    {
+      "id": 2,
+      "title": "11112",
+      "author": "xiaolin"
+    },
+    {
+      "id": 3,
+      "title": "11113",
+      "author": "xiaowang"
+    },
+    {
+      "id": 4,
+      "title": "11114",
+      "author": "xiaohuang"
+    },
+    {
+      "title": "3333",
+      "author": "xiaochen",
+      "id": 6
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "15151231sd1asd1asdasd",
+      "postId": 1
+    },
+    {
+        "id": 2,
+        "body": "2sadsadasdasdasd",
+        "postId": 2
+      },
+      {
+        "id": 3,
+        "body": "3sadasdasdasdas",
+        "postId": 3
+      },
+      {
+        "id": 4,
+        "body": "4dsadsadasdasdas",
+        "postId": 4
+      }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- 1.准备好一个“容器” -->
+<div id="test"></div>
+<div id="test2"></div>
+<div id="test3"></div>
+<div id="test4"></div>
+
+
+<!-- 引入react核心库 -->
+<script src="../js/react.development.js"></script>
+<!-- 引入react-dom。用于支持react操作DOM -->
+<script src="../js/react-dom.development.js"></script>
+<!-- 引入babel，用于将jsx转为js -->
+<script src="../js/babel.min.js"></script>
+<script type="text/babel">
+//创建组件
+class Person extends React.Component{
+    render(){
+        const {name,age,sex,home} = this.props
+        return (
+            <ul>
+                <li>姓名：{name}</li>
+                <li>性别：{sex}</li>
+                <li>年龄：{age}</li>
+                <li>家庭:{home}</li>
+            </ul>
+        )
+    }
+}
+//渲染组件到页面
+ReactDOM.render(<Person name="tom" age={18} />,document.getElementById('test'))
+ReactDOM.render(<Person name="kate" age="21" sex="女"/>,document.getElementById('test2'))
+const p = {name:'老刘',age:18,sex:'女'}
+ReactDOM.render(<Person name="xiaozhong" age={22} sex="男" home="汕头"/>,document.getElementById('test4'))
+// ReactDOM.render(<Person name={p.name} age={p.age} sex={p.sex}/>,document.getElementById('test3'))
+ReactDOM.render(<Person {...p}/>,document.getElementById('test3'))
+
+</script>
+</body>
+</html>
