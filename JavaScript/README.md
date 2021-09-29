@@ -1,1 +1,1 @@
-## 此仓库用来存放JavaScript的学习代码
+## 此文件夹用来存放JavaScript的学习代码
